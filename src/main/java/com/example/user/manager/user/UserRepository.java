@@ -1,6 +1,7 @@
 package com.example.user.manager.user;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Optional;
 
 @Component
 @AllArgsConstructor
+@Slf4j
 public class UserRepository {
     private UserDB userDB;
 
@@ -19,6 +21,7 @@ public class UserRepository {
                 .status(Status.ACTIVE)
                 .build();
         userDB.save(newUser);
+        log.info("Added user {}", newUser);
     }
 
     public void deleteUser(Long id) {
